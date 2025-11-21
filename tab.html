@@ -22,7 +22,7 @@ html, body {
   overflow: hidden;
 }
 
-/* ========= GAME WRAPPER (REAL SIZE 800x1340) ========= */
+/* ========= GAME WRAPPER (REAL SIZE 800x1340 + SAFE MARGIN) ========= */
 #scaleWrap {
   position: absolute;
   left: 50%;
@@ -30,12 +30,15 @@ html, body {
   width: 800px;
   height: 1340px;
   transform-origin: top left;
+
+  /* ===== SAFE MARGIN (40px) ===== */
+  padding: 40px;
 }
 
-/* ========= PAGE STYLES ========= */
+/* ========= SAFE AREA PAGES ========= */
 .app-page {
-  width: 800px;
-  height: 1340px;
+  width: calc(800px - 80px);     /* 40px left + 40px right */
+  height: calc(1340px - 80px);   /* 40px top + 40px bottom */
   display: none;
   align-items: center;
   justify-content: center;
@@ -294,7 +297,6 @@ function finishGame(){
 
   show(winner);
 
-  /* Auto return to page 1 */
   setTimeout(()=> show(page1), 7000);
 }
 </script>
